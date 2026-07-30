@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="gu" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a192f">
+  <meta name="description" content="અમારી વહાલી ચકુ (Riddhi Patel) ને જન્મદિવસની ખૂબ ખૂબ શુભેચ્છાઓ">
+  <title>Happy Birthday ચકુ 🎂 | Riddhi Patel</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======== 1. PREMIUM LOADING SCREEN ======== -->
+  <div id="loadingScreen" class="loading-screen">
+    <canvas id="loadingCanvas"></canvas>
+    <div class="loading-content">
+      <div class="loading-logo">
+        <i class="fas fa-gift"></i>
+      </div>
+      <div class="loader-bar">
+        <div class="loader-progress" id="loaderProgress"></div>
+      </div>
+      <p class="loading-text">એક ખાસ સરપ્રાઇઝ તૈયાર થઈ રહ્યું છે...</p>
+      <p class="loading-subtext" id="loadingSubtext">થોડી ક્ષમતા કરો...</p>
+    </div>
+  </div>
+
+  <!-- ======== MAIN WEBSITE ======== -->
+  <div id="mainSite" class="main-site hidden">
+
+    <!-- ======== CURSOR GLOW ======== -->
+    <div id="cursorGlow" class="cursor-glow"></div>
+
+    <!-- ======== ANIMATED BACKGROUND ======== -->
+    <div id="bgCanvasContainer">
+      <canvas id="bgCanvas"></canvas>
+    </div>
+
+    <!-- ======== FLOATING DECORATIONS ======== -->
+    <div id="floatingDecorations" class="floating-decorations"></div>
+
+    <!-- ======== MUSIC PLAYER ======== -->
+    <div id="musicPlayer" class="music-player">
+      <button id="musicToggle" class="music-toggle glass-btn" aria-label="Toggle Music">
+        <i class="fas fa-music"></i>
+        <span class="music-label">ગીત</span>
+      </button>
+      <div class="music-player-popup hidden" id="musicPopup">
+        <div class="music-info">
+          <div class="music-wave">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <p>જન્મદિવસનું ગીત</p>
+          <audio id="birthdayAudio" loop preload="none">
+            <source src="assets/audio/birthday-song.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+        <button id="musicCloseBtn" class="music-close" aria-label="Close Music Player">&times;</button>
+      </div>
+    </div>
+
+    <!-- ======== SCROLL PROGRESS ======== -->
+    <div id="scrollProgress" class="scroll-progress"></div>
+
+    <!-- ======== 2. HERO SECTION ======== -->
+    <section id="hero" class="hero-section">
+      <div class="hero-particles" id="heroParticles"></div>
+      <div class="container hero-container">
+        <div class="hero-badge">
+          <span class="badge-icon">&#127874;</span>
+          <span class="badge-text">28મો જન્મદિવસ</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="title-line-1">અમારી વહાલી</span>
+          <span class="title-line-2 highlight-gold">ચકુ</span>
+          <span class="title-line-3">ને જન્મદિવસની</span>
+          <span class="title-line-4">ખૂબ ખૂબ શુભેચ્છાઓ</span>
+        </h1>
+        <div class="hero-details">
+          <div class="detail-item">
+            <i class="fas fa-star"></i>
+            <span>રિદ્ધિ પટેલ</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-calendar-alt"></i>
+            <span>૩૧ જુલાઇ ૧૯૯૮</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-birthday-cake"></i>
+            <span>૨૮ વર્ષની</span>
+          </div>
+        </div>
+        <div class="hero-cta">
+          <button class="glass-btn hero-btn" onclick="document.getElementById('countdown').scrollIntoView({behavior:'smooth'})">
+            <i class="fas fa-heart"></i>
+            <span>વિશેષ શરૂ કરો</span>
+          </button>
+        </div>
+        <div class="scroll-indicator">
+          <span>નીચે સ્ક્રોલ કરો</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 3. COUNTDOWN SECTION ======== -->
+    <section id="countdown" class="section countdown-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">જન્મદિવસ સુધીનો સમય</h2>
+          <div class="divider">
+            <i class="fas fa-gem"></i>
+          </div>
+          <p class="section-subtitle">તમારા ખાસ દિવસની ઉજવણી માટેની પળો</p>
+        </div>
+        <div class="countdown-grid" id="countdownGrid">
+          <div class="countdown-card">
+            <span class="countdown-number" id="days">00</span>
+            <span class="countdown-label">દિવસ</span>
+          </div>
+          <div class="countdown-card">
+            <span class="countdown-number" id="hours">00</span>
+            <span class="countdown-label">કલાક</span>
+          </div>
+          <div class="countdown-card">
+            <span class="countdown-number" id="minutes">00</span>
+            <span class="countdown-label">મિનિટ</span>
+          </div>
+          <div class="countdown-card">
+            <span class="countdown-number" id="seconds">00</span>
+            <span class="countdown-label">સેકન્ડ</span>
+          </div>
+        </div>
+        <div id="birthdayMessage" class="birthday-message hidden">
+          <div class="birthday-msg-content">
+            <i class="fas fa-birthday-cake"></i>
+            <h3>&#127881; આજે જન્મદિવસ છે &#127881;</h3>
+            <p>જન્મદિવસની ખૂબ ખૂબ શુભેચ્છાઓ અમારી વહાલી ચકુ!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 4. BIRTHDAY CAKE SECTION ======== -->
+    <section id="cakeSection" class="section cake-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">કેક કાપો</h2>
+          <div class="divider">
+            <i class="fas fa-birthday-cake"></i>
+          </div>
+        </div>
+        <div class="cake-container">
+          <div class="cake-wrapper" id="cakeWrapper">
+            <div class="cake-plate"></div>
+            <div class="cake-base">
+              <div class="cake-layer cake-layer-1">
+                <div class="cream-drip"></div>
+              </div>
+              <div class="cake-layer cake-layer-2">
+                <div class="cream-drip"></div>
+              </div>
+              <div class="cake-layer cake-layer-3">
+                <div class="cream-drip"></div>
+              </div>
+              <div class="cake-candles" id="cakeCandles">
+                <div class="candle" data-index="0">
+                  <div class="flame" id="flame0"></div>
+                </div>
+                <div class="candle" data-index="1">
+                  <div class="flame" id="flame1"></div>
+                </div>
+                <div class="candle" data-index="2">
+                  <div class="flame" id="flame2"></div>
+                </div>
+              </div>
+              <div class="cake-text">ચકુ</div>
+            </div>
+            <div class="cake-shadow"></div>
+          </div>
+          <div class="cake-actions">
+            <button id="blowCandleBtn" class="glass-btn cake-btn">
+              <i class="fas fa-wind"></i>
+              <span>મીણબત્તી બુઝાવો</span>
+            </button>
+            <button id="cutCakeBtn" class="glass-btn cake-btn">
+              <i class="fas fa-utensils"></i>
+              <span>કેક કાપો</span>
+            </button>
+            <button id="resetCakeBtn" class="glass-btn cake-btn hidden">
+              <i class="fas fa-redo"></i>
+              <span>ફરીથી</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 5. FAMILY WISHES SECTION ======== -->
+    <section id="wishes" class="section wishes-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">પરિવારની શુભેચ્છાઓ</h2>
+          <div class="divider">
+            <i class="fas fa-heart"></i>
+          </div>
+          <p class="section-subtitle">આપના પરિવાર તરફથી ખાસ આશીર્વાદ અને શુભકામનાઓ</p>
+        </div>
+        <div class="wishes-grid" id="wishesGrid">
+
+          <!-- Papa Card -->
+          <div class="wish-card" data-aos="fade-up">
+            <div class="wish-card-inner">
+              <div class="wish-photo">
+                <div class="photo-placeholder">
+                  <i class="fas fa-user-tie"></i>
+                  <span>પપ્પા</span>
+                </div>
+              </div>
+              <div class="wish-content">
+                <div class="wish-relation">પપ્પા</div>
+                <h3 class="wish-name">પ્રકાશભાઇ પટેલ</h3>
+                <div class="wish-divider"></div>
+                <p class="wish-text">"મારી વહાલી દીકરી રિદ્ધિ, તને જન્મદિવસની ખૂબ ખૂબ શુભેચ્છાઓ. ભગવાન તને હંમેશા સુખી અને સ્વસ્થ રાખે. તું હંમેશા આગળ વધતી રહે અને જીવનમાં ઊંચાઇઓ પ્રાપ્ત કરતી રહે. તારી દરેક ખુશીમાં મારી દુઆ છે."</p>
+                <div class="wish-footer">
+                  <i class="fas fa-hand-paper"></i>
+                  <span>આશીર્વાદ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mummy Card -->
+          <div class="wish-card" data-aos="fade-up">
+            <div class="wish-card-inner">
+              <div class="wish-photo">
+                <div class="photo-placeholder">
+                  <i class="fas fa-user"></i>
+                  <span>મમ્મી</span>
+                </div>
+              </div>
+              <div class="wish-content">
+                <div class="wish-relation">મમ્મી</div>
+                <h3 class="wish-name">સરોજબેન પટેલ</h3>
+                <div class="wish-divider"></div>
+                <p class="wish-text">"મારી લાડકી દીકરી ચકુ, તારા જન્મદિવસે હું ભગવાનનો આભાર માનું છું કે મને તારા જેવી દીકરી આપી. તું મારા જીવનની સૌથી મોટી ખુશી છે. ભગવાન તને લાંબુ આયુષ્ય આપે અને તારી બધી ઇચ્છાઓ પૂર્ણ કરે."</p>
+                <div class="wish-footer">
+                  <i class="fas fa-hand-paper"></i>
+                  <span>આશીર્વાદ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Brother Card -->
+          <div class="wish-card featured" data-aos="fade-up">
+            <div class="wish-card-inner">
+              <div class="wish-photo">
+                <div class="photo-placeholder">
+                  <i class="fas fa-user"></i>
+                  <span>ભાઇ</span>
+                </div>
+              </div>
+              <div class="wish-content">
+                <div class="wish-relation">ભાઇ</div>
+                <h3 class="wish-name">બ્રિજેશ પટેલ</h3>
+                <div class="wish-divider"></div>
+                <p class="wish-text">"મારી વહાલી બહેન ચકુ...આજે તારો 28મો જન્મદિવસ છે અને હું કેટલો ગર્વ અનુભવું છું તે શબ્દોમાં વ્યક્ત કરી શકતો નથી. હજુ યાદ છે જ્યારે તું નાની હતી ત્યારે હું તને રમકડાં લાવતો હતો અને તું ખુશીથી નાચતી હતી? એ દિવસો કેટલા સુંદર હતા. તું હંમેશા માત્ર મારી નાની બહેન ન હતી, પણ મારી સૌથી નજીકની મિત્ર પણ રહી છે. જીવનની દરેક મુશ્કેલીમાં અમે સાથે રહ્યા છીએ અને હું જાણું છું કે આગળ પણ આપણો આ પ્યાર એવો જ રહેશે. તારી સફળતા જોઇને મને ગર્વ થાય છે. તું હંમેશા આગળ વધતી રહે, દરેક સપનું સાકાર કરતી રહે. ભગવાન તને હંમેશા ખુશ રાખે અને તારા જીવનમાં અપાર સુખ, શાંતિ અને સમૃદ્ધિ આપે. જન્મદિવસની ખૂબ ખૂબ શુભેચ્છાઓ મારી પ્યારી ચકુ. હું તને ખૂબ પ્રેમ કરું છું."</p>
+                <div class="wish-footer">
+                  <i class="fas fa-heart"></i>
+                  <span>ખૂબ પ્રેમ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bhabhi Card -->
+          <div class="wish-card" data-aos="fade-up">
+            <div class="wish-card-inner">
+              <div class="wish-photo">
+                <div class="photo-placeholder">
+                  <i class="fas fa-user-friends"></i>
+                  <span>ભાભી</span>
+                </div>
+              </div>
+              <div class="wish-content">
+                <div class="wish-relation">ભાભી</div>
+                <h3 class="wish-name">જ્યોતિ પટેલ</h3>
+                <div class="wish-divider"></div>
+                <p class="wish-text">"ડિયર રિદ્ધિ, તને જન્મદિવસની ખૂબ ખૂબ શુભેચ્છાઓ. પરિવારમાં આવ્યા પછી મને તારા જેવી સુંદર અને સમજદાર નણંદ મળી તે મારું સદ્ભાગ્ય છે. તારી દરેક ખુશીમાં હું સાથે છું. ભગવાન તને હંમેશા સુખી રાખે. તારું સ્મિત હંમેશા એવું જ ખીલતું રહે."</p>
+                <div class="wish-footer">
+                  <i class="fas fa-heart"></i>
+                  <span>પ્રેમ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Henvi Card -->
+          <div class="wish-card" data-aos="fade-up">
+            <div class="wish-card-inner">
+              <div class="wish-photo">
+                <div class="photo-placeholder">
+                  <i class="fas fa-child"></i>
+                  <span>હેન્વી</span>
+                </div>
+              </div>
+              <div class="wish-content">
+                <div class="wish-relation">ભત્રીજી</div>
+                <h3 class="wish-name">હેન્વી પટેલ (૫ વર્ષ)</h3>
+                <div class="wish-divider"></div>
+                <p class="wish-text">"હેપ્પી બર્થડે ફોઈ! ફોઈ તમે મારી સૌથી બેસ્ટ ફોઈ છો. મને ગિફ્ટ લાવજો ને મારી સાથે રમજો. હું તમને ખૂબ ખૂબ મિસ કરું છું. તમે મારા મમ્મી-પપ્પા સાથે મારા ઘરે આવો તો મને ઘણી મજા આવે. હેપ્પી બર્થડે ફોઈ! આય લવ યુ ફોઈ!"</p>
+                <div class="wish-footer">
+                  <i class="fas fa-heart"></i>
+                  <span>ખૂબ પ્રેમ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 6. BROTHER SPECIAL LETTER ======== -->
+    <section id="brotherLetter" class="section letter-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">ભાઇનો ખાસ પત્ર</h2>
+          <div class="divider">
+            <i class="fas fa-envelope"></i>
+          </div>
+        </div>
+        <div class="letter-container">
+          <div class="letter-paper" id="letterPaper">
+            <div class="letter-stamp">
+              <i class="fas fa-heart"></i>
+            </div>
+            <div class="letter-date">૩૧ જુલાઇ, ૨૦૨૬</div>
+            <div class="letter-greeting">મારી પ્યારી બહેન ચકુ,</div>
+            <div class="letter-body">
+              <p>આજે તારો ૨૮મો જન્મદિવસ છે અને હું આ પત્ર લખીને મારા મનની વાત કહેવા માંગુ છું. એ વાત સાચી છે કે આપણે ઘણીવાર રોજબરોજની જિંદગીમાં લાગણીઓ વ્યક્ત કરતા નથી, પણ આજનો દિવસ ખાસ છે અને તું પણ ખાસ છે.</p>
+              <p>મને યાદ છે જ્યારે તું નાની હતી ત્યારે હું તને શાળાએ મૂકવા જતો હતો અને તું મારો હાથ પકડીને ચાલતી હતી. તારા તે નાનકડા હાથની ગરમાહટ આજે પણ મને યાદ છે. આપણે સાથે રમતા, સાથે ભણતા, સાથે ઝઘડતા અને ફરીથી સાથે હસતા. તે બધી યાદો મારા માટે અમૂલ્ય છે.</p>
+              <p>તું હંમેશા એક સપોર્ટિવ અને કેરિંગ બહેન રહી છે. તારી સફળતા જોઇને મને અતિ ગર્વ થાય છે. તું માત્ર સારી બહેન જ નથી પણ એક પ્રેરણાદાયી વ્યક્તિત્વ ધરાવે છે. તારી મહેનત, તારું સમર્પણ અને તારી સુંદર વ્યક્તિત્વથી હું ખૂબ પ્રભાવિત છું.</p>
+              <p>જીવનની દરેક ઉંચી-નીચી પળોમાં હું તારી સાથે છું, હંમેશા રહીશ. કોઇ પણ મુશ્કેલી હોય, કોઇ પણ સપનું હોય, હું તારી સાથે છું. તારી દરેક ખુશી મારી ખુશી છે અને તારી દરેક સિદ્ધિ મારા માટે ગર્વની વાત છે.</p>
+              <p>ભગવાન તને હંમેશા સુખી રાખે. તારું જીવન પ્રેમ, આનંદ અને સફળતાથી ભરેલું રહે. તારા દરેક સપના સાકાર થાય. તું હંમેશા એવી જ સુંદર, સમજદાર અને પ્રેમાળ રહે.</p>
+              <p>જન્મદિવસની ખૂબ ખૂબ શુભેચ્છાઓ મારી પ્યારી ચકુ. હું તને ખૂબ ખૂબ પ્રેમ કરું છું.</p>
+            </div>
+            <div class="letter-closing">
+              <p>તારો ખૂબ પ્રેમ કરનાર,</p>
+              <p class="letter-signature">બ્રિજેશ (ભાઇ)</p>
+            </div>
+            <div class="letter-hearts">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-heart"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 7. MEMORY GALLERY ======== -->
+    <section id="memoryGallery" class="section gallery-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">યાદોની ગેલેરી</h2>
+          <div class="divider">
+            <i class="fas fa-camera"></i>
+          </div>
+          <p class="section-subtitle">તારી સાથેની કેટલીક ખાસ પળો</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item" data-aos="zoom-in">
+            <div class="gallery-placeholder">
+              <i class="fas fa-image"></i>
+              <span>ફોટો ૧</span>
+            </div>
+            <img data-src="assets/images/riddhi/photo1.jpg" alt="રિદ્ધિનો ફોટો ૧" class="gallery-img lazy" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-caption">ખાસ પળ</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-aos="zoom-in">
+            <div class="gallery-placeholder">
+              <i class="fas fa-image"></i>
+              <span>ફોટો ૨</span>
+            </div>
+            <img data-src="assets/images/riddhi/photo2.jpg" alt="રિદ્ધિનો ફોટો ૨" class="gallery-img lazy" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-caption">સુંદર પળ</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-aos="zoom-in">
+            <div class="gallery-placeholder">
+              <i class="fas fa-image"></i>
+              <span>ફોટો ૩</span>
+            </div>
+            <img data-src="assets/images/riddhi/photo3.jpg" alt="રિદ્ધિનો ફોટો ૩" class="gallery-img lazy" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-caption">યાદગાર પળ</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-aos="zoom-in">
+            <div class="gallery-placeholder">
+              <i class="fas fa-image"></i>
+              <span>ફોટો ૪</span>
+            </div>
+            <img data-src="assets/images/riddhi/photo4.jpg" alt="રિદ્ધિનો ફોટો ૪" class="gallery-img lazy" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-caption">ખુશીની પળ</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-aos="zoom-in">
+            <div class="gallery-placeholder">
+              <i class="fas fa-image"></i>
+              <span>ફોટો ૫</span>
+            </div>
+            <img data-src="assets/images/riddhi/photo5.jpg" alt="રિદ્ધિનો ફોટો ૫" class="gallery-img lazy" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-caption">અનમોલ પળ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 8. FAMILY GALLERY ======== -->
+    <section id="familyGallery" class="section gallery-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">પરિવાર ગેલેરી</h2>
+          <div class="divider">
+            <i class="fas fa-users"></i>
+          </div>
+          <p class="section-subtitle">આપણા પરિવારની સાથેની યાદો</p>
+        </div>
+        <div class="gallery-grid family-grid">
+          <div class="gallery-item" data-aos="zoom-in">
+            <div class="gallery-placeholder">
+              <i class="fas fa-image"></i>
+              <span>ફેમિલી ૧</span>
+            </div>
+            <img data-src="assets/images/family/family1.jpg" alt="પરિવાર ફોટો ૧" class="gallery-img lazy" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-caption">આપણો પરિવાર</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-aos="zoom-in">
+            <div class="gallery-placeholder">
+              <i class="fas fa-image"></i>
+              <span>ફેમિલી ૨</span>
+            </div>
+            <img data-src="assets/images/family/family2.jpg" alt="પરિવાર ફોટો ૨" class="gallery-img lazy" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-caption">સાથેની પળ</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-aos="zoom-in">
+            <div class="gallery-placeholder">
+              <i class="fas fa-image"></i>
+              <span>ફેમિલી ૩</span>
+            </div>
+            <img data-src="assets/images/family/family3.jpg" alt="પરિવાર ફોટો ૩" class="gallery-img lazy" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-caption">આપણી ખુશી</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-aos="zoom-in">
+            <div class="gallery-placeholder">
+              <i class="fas fa-image"></i>
+              <span>ફેમિલી ૪</span>
+            </div>
+            <img data-src="assets/images/family/family4.jpg" alt="પરિવાર ફોટો ૪" class="gallery-img lazy" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-caption">આપણો પ્રેમ</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-aos="zoom-in">
+            <div class="gallery-placeholder">
+              <i class="fas fa-image"></i>
+              <span>ફેમિલી ૫</span>
+            </div>
+            <img data-src="assets/images/family/family5.jpg" alt="પરિવાર ફોટો ૫" class="gallery-img lazy" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-caption">આપણો સાથ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 9. BIRTHDAY QUOTES CAROUSEL ======== -->
+    <section id="quotes" class="section quotes-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">જન્મદિવસની સુંદર વાણી</h2>
+          <div class="divider">
+            <i class="fas fa-quote-right"></i>
+          </div>
+        </div>
+        <div class="quote-carousel" id="quoteCarousel">
+          <div class="quote-track" id="quoteTrack">
+            <div class="quote-slide">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p class="quote-text">"જન્મદિવસ એ માત્ર એક દિવસ નથી, પણ એ પ્રેમ, ખુશી અને આશીર્વાદની ઉજવણી છે. તારા જેવી સુંદર આત્મા આ દુનિયામાં આવી તે ભગવાનની અમૂલ્ય ભેટ છે."</p>
+              <p class="quote-author">- ચકુ માટે</p>
+            </div>
+            <div class="quote-slide">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p class="quote-text">"તારું સ્મિત આખા ઘરને પ્રકાશિત કરે છે. તારી હસી આપણા જીવનમાં રંગ ભરે છે. ભગવાન તને હંમેશા ખુશ રાખે."</p>
+              <p class="quote-author">- પરિવાર તરફથી</p>
+            </div>
+            <div class="quote-slide">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p class="quote-text">"બહેન એટલે એક એવી ભેટ જે જીવનભર સાથે રહે છે. તું માત્ર બહેન નથી પણ મારી સૌથી નજીકની મિત્ર પણ છે."</p>
+              <p class="quote-author">- ભાઇ તરફથી</p>
+            </div>
+            <div class="quote-slide">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p class="quote-text">"જીવનની દરેક સિઝનમાં તું ફૂલની જેમ ખીલતી રહે. તારી ખુશબો આખા ઘરને મહેકાવે છે."</p>
+              <p class="quote-author">- મમ્મી તરફથી</p>
+            </div>
+            <div class="quote-slide">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p class="quote-text">"દીકરી એટલે પરિવારની રાણી. તું આપણા ઘરની રાણી છે અને હંમેશા રહીશ. ભગવાન તને હંમેશા સુખી રાખે."</p>
+              <p class="quote-author">- પપ્પા તરફથી</p>
+            </div>
+            <div class="quote-slide">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p class="quote-text">"જન્મદિવસ એ નવી શરૂઆતનો દિવસ છે. તારા જીવનનું દરેક પાનું સફળતા અને ખુશીથી ભરેલું હોય."</p>
+              <p class="quote-author">- શુભેચ્છા</p>
+            </div>
+            <div class="quote-slide">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p class="quote-text">"તારા જેવી દીકરી મળી તે મારા જીવનની સૌથી મોટી ખુશી છે. તું હંમેશા મારી નાની બાળકી રહીશ."</p>
+              <p class="quote-author">- મમ્મી તરફથી</p>
+            </div>
+            <div class="quote-slide">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p class="quote-text">"બહેનના પ્રેમમાં એક અલગ જ મીઠાશ છે. તારા પ્રેમ અને કેર માટે હું હંમેશા તારો આભારી છું."</p>
+              <p class="quote-author">- ભાઇ તરફથી</p>
+            </div>
+            <div class="quote-slide">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p class="quote-text">"ખુશીઓ તારા જીવનમાં એવી જ આવે જેમ ફૂલો પર પતંગિયા આવે છે. તારું જીવન હંમેશા રંગીન રહે."</p>
+              <p class="quote-author">- આશીર્વાદ</p>
+            </div>
+            <div class="quote-slide">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p class="quote-text">"તું ફક્ત આપણા ઘરની જ નહીં, પણ આપણા દિલની પણ શણગાર છે. તારા વિના આપણું જીવન અધૂરું છે."</p>
+              <p class="quote-author">- આખો પરિવાર</p>
+            </div>
+          </div>
+          <div class="quote-controls">
+            <button class="glass-btn quote-btn" id="quotePrev" aria-label="Previous Quote"><i class="fas fa-chevron-left"></i></button>
+            <div class="quote-dots" id="quoteDots"></div>
+            <button class="glass-btn quote-btn" id="quoteNext" aria-label="Next Quote"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 10. PHOTO FRAME SECTION ======== -->
+    <section id="photoFrame" class="section photoframe-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">અમારી રાજકુંવરી</h2>
+          <div class="divider">
+            <i class="fas fa-crown"></i>
+          </div>
+        </div>
+        <div class="frame-container">
+          <div class="premium-frame" id="premiumFrame">
+            <div class="frame-border">
+              <div class="frame-inner">
+                <div class="frame-placeholder">
+                  <i class="fas fa-camera"></i>
+                  <span>રિદ્ધિનો ફોટો</span>
+                </div>
+                <img data-src="assets/images/riddhi/profile.jpg" alt="રિદ્ધિ પટેલનો પ્રોફાઇલ ફોટો" class="frame-img lazy" loading="lazy">
+              </div>
+              <div class="frame-decorations">
+                <span class="frame-gem top-left"><i class="fas fa-gem"></i></span>
+                <span class="frame-gem top-right"><i class="fas fa-gem"></i></span>
+                <span class="frame-gem bottom-left"><i class="fas fa-gem"></i></span>
+                <span class="frame-gem bottom-right"><i class="fas fa-gem"></i></span>
+              </div>
+            </div>
+            <div class="frame-caption">
+              <h3>રિદ્ધિ પટેલ (ચકુ)</h3>
+              <p>અમારી લાડકી રાજકુંવરી</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 11. FINAL BLESSING SECTION ======== -->
+    <section id="blessings" class="section blessings-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">આખા પરિવાર તરફથી</h2>
+          <div class="divider">
+            <i class="fas fa-hands"></i>
+          </div>
+        </div>
+        <div class="blessings-container">
+          <p class="blessings-intro">પ્રેમ અને આશીર્વાદ સાથે</p>
+          <div class="family-names">
+            <div class="family-name-item" data-aos="fade-up">
+              <span class="name-role">પપ્પા</span>
+              <span class="name-person">પ્રકાશભાઇ પટેલ</span>
+            </div>
+            <div class="family-name-item" data-aos="fade-up">
+              <span class="name-role">મમ્મી</span>
+              <span class="name-person">સરોજબેન પટેલ</span>
+            </div>
+            <div class="family-name-item" data-aos="fade-up">
+              <span class="name-role">ભાઇ</span>
+              <span class="name-person">બ્રિજેશ પટેલ</span>
+            </div>
+            <div class="family-name-item" data-aos="fade-up">
+              <span class="name-role">ભાભી</span>
+              <span class="name-person">જ્યોતિ પટેલ</span>
+            </div>
+            <div class="family-name-item" data-aos="fade-up">
+              <span class="name-role">ભત્રીજી</span>
+              <span class="name-person">હેન્વી પટેલ</span>
+            </div>
+          </div>
+          <div class="blessings-closing">
+            <i class="fas fa-heart"></i>
+            <p>જન્મદિવસની ખૂબ ખૂબ શુભેચ્છાઓ, અમારી વહાલી ચકુ!</p>
+            <i class="fas fa-heart"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 12. FOOTER ======== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-hearts">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+          </div>
+          <p class="footer-text">Made with Love ❤️</p>
+          <p class="footer-for">અમારી વહાલી ચકુ માટે</p>
+          <p class="footer-copy">&copy; 2026 - હંમેશા તારા પ્રેમમાં</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ======== CONFETTI CANVAS ======== -->
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
